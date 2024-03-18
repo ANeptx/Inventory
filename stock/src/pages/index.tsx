@@ -9,8 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { AddWarehouse } from "./addwarehouse";
-import WarehouseInfo from "./warehouseinfo";
+import { AddWarehouse } from "./warehouses/addwarehouse";
+import WarehouseInfo from "./warehouses/warehouseinfo";
 
 interface WarehouseData {
   organization_id: string;
@@ -40,7 +40,7 @@ export default function Home() {
     setShowAddWarehouse(false); // เมื่อบันทึกเสร็จให้ปิดหน้า AddWarehouse
   };
 
-  const handleWarehouseClick = (index) => {
+  const handleWarehouseClick = () => {
     setShowWarehouseInfo(true);
   };
 
