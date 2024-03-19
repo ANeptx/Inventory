@@ -152,8 +152,7 @@ export default function WarehouseInfo() {
   };
   return (
     <Layout>
-    <div className="h-screen">
-      <div className="items-center">
+      <div className="h-screen w-full">
         <div className="flex items-center justify-center">
           <MagnifyingGlassIcon className="size-6 m-2" />
           <Input
@@ -171,7 +170,7 @@ export default function WarehouseInfo() {
             Export
           </Button>
         </div>
-        <div>
+        <div className="w-full">
           <Card>
             <CardContent>
               <Table>
@@ -337,7 +336,7 @@ export default function WarehouseInfo() {
             <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
               <div className="z-99">
                 <EditWarehouse
-                 warehouseData={"TEST"}
+                  warehouseData={"TEST"}
                   onSave={handleEditOpen}
                   onClose={handleEditClose}
                 />
@@ -346,7 +345,6 @@ export default function WarehouseInfo() {
           )}
         </div>
       </div>
-    </div>
     </Layout>
   );
 }

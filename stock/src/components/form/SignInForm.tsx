@@ -61,7 +61,7 @@ const SignInForm = (props: SignInProps) => {
             password: values.password,
         }).then(res => {
             if(res.data){
-                router.push('/warehouses/warehouseinfo');
+                router.push('/warehouses/');
             } 
         }).catch(error => (
 
