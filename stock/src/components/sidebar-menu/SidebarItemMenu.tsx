@@ -17,9 +17,9 @@ export const SidebarItemMenu = () => {
             {sideBar.map((item) => (
                 <Link href={item.link}>
                     <button
-                        className={`p-2 w-full text-left px-8 hover:translate-x-1.5 duration-100 rounded-md 
+                        className={`p-2 w-full text-left font-lexend font-light px-8 hover:translate-x-1.5 duration-100 rounded-md 
                         ${router.pathname === item.link ? 'bg-cyan-400 text-white font-semibold shadow-md shadow-cyan-500/50'
-                                : 'bg-white text-black'
+                                : 'bg-white text-gray-500'
                             }`}
                     >
                         {item.label}

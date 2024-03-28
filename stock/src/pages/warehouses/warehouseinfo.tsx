@@ -115,7 +115,7 @@ export default function WarehouseInfo() {
     setIsEditOpen(false);
   };
 
-  const handleSearch = (event) => {
+  const handleSearch = (event:any) => {
     setSearchTerm(event.target.value);
   };
 
@@ -152,7 +152,7 @@ export default function WarehouseInfo() {
   };
   return (
     <Layout>
-      <div className="h-screen w-full">
+      <div className="h-screen w-full font-lexend font-light text-gray-500">
         <div className="flex items-center justify-center">
           <MagnifyingGlassIcon className="size-6 m-2" />
           <Input
@@ -189,7 +189,7 @@ export default function WarehouseInfo() {
                     <TableHead>Adjust Minimum Level</TableHead>
                   </TableRow>
                 </TableHeader>
-                <TableBody>
+                <TableBody className="font-light text-base text-gray-500">
                   {filteredData.map((inventory) => (
                     <TableRow key={inventory.itemcode}>
                       <TableCell>{inventory.itemcode}</TableCell>

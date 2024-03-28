@@ -1,10 +1,13 @@
-import React from 'react'
-import Layout from '@/components/layout'
+import React from "react";
+import Layout from "@/components/layout";
+import { TableCategory } from "./tablecategory";
 
-export default function index(){
+export default function index() {
   return (
     <Layout>
-    <div></div>
+      <main className="h-screen">
+        <TableCategory />
+      </main>
     </Layout>
-  )
+  );
 }

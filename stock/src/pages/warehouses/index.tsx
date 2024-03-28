@@ -23,7 +23,7 @@ interface WarehouseData {
     branch: string;
     receive_email: boolean;
 }
-export default function index() {
+export default function Index() {
     const [showAddWarehouse, setShowAddWarehouse] = useState(false);
     const [showWarehouseInfo, setShowWarehouseInfo] = useState(false);
     const [warehouses, setWarehouses] = useState<WarehouseData[]>([]);
@@ -47,7 +47,7 @@ export default function index() {
 
     return (
         <Layout>
-            <main className="flex h-screen flex-col items-center justify-between">
+            <main className="flex h-screen flex-col items-center justify-between font-lexend font-light text-base text-gray-500">
                 <div className="w-full items-center font-mono text-sm ">
                     <div className="flex justify-end pb-4">
                         <Button className="bg-sky-900" onClick={handleAddWarehouseClick}>
@@ -56,7 +56,7 @@ export default function index() {
                     </div>
                 </div>
                 {showAddWarehouse && (
-                    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center">
                         <div className="z-99">
                             <AddWarehouse
                                 onSave={handleSaveWarehouse}

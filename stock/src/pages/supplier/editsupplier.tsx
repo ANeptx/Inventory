@@ -6,10 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Switch } from "@/components/ui/switch";
-import { useState } from "react";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 
+import { Textarea } from "@/components/ui/textarea";
 import {
   Card,
   CardContent,
@@ -38,8 +36,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function AddSupplier({ onSave, onClose }) {
+export function EditSupplier({ onSave, onClose, inventory }) {
+
+
+  
   const formSchema = z.object({
+    id: z.number(),
     company_name: z.string().min(1, {
       message: "Company Name field is required",
     }),
@@ -69,19 +71,21 @@ export function AddSupplier({ onSave, onClose }) {
   }>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      id: 1,
-      company_name: "",
-      item_category: "",
-      address: "",
-      contact_name: "",
-      contact_tel: "",
-      contact_email: "",
-      lastupdate: "",
-      status: false,
-    },
+        id: inventory.id,
+        company_name: inventory.company_name,
+        item_category: inventory.item_category,
+        address: inventory.address,
+        contact_name: inventory.contact_name,
+        contact_tel: inventory.contact_tel,
+        contact_email: inventory.contact_email,
+        lastupdate: inventory.lastupdate,
+        status: false,
+      },
   });
 
+
   function onSubmit(values) {
+    console.log(values)
     const statusValue = values.status ? "Active" : "Inactive";
     const options = {
       month: "long",
@@ -95,7 +99,6 @@ export function AddSupplier({ onSave, onClose }) {
       era: undefined,
       timeZoneName: undefined,
     };
-
     const currentDate = new Date().toLocaleString("en-US", options); // ดึงข้อมูลวันที่และเวลาปัจจุบัน
     const formattedDate = currentDate.replace(/(\d+)(st|nd|rd|th)/, "$1$2");
     const valuesWithDate = {
@@ -103,14 +106,14 @@ export function AddSupplier({ onSave, onClose }) {
       lastupdate: formattedDate,
       status: statusValue,
     }; // เพิ่มค่า last_update ใน object values
-    onSave(valuesWithDate); // ส่งข้อมูลไปยัง onSave พร้อมกับข้อมูล last_update
-    onClose();
+  onSave(valuesWithDate); // ส่ง id และข้อมูลที่แก้ไขไปยัง onSave
+  onClose();
   }
   return (
-    <div className="flex items-center">
+    <div className="h-[50%]">
       <Card className="w-[500px] h-[700px] overflow-y-auto">
         <CardHeader className="bg-gray-100">
-          <CardTitle className="light:invert">New Supplier</CardTitle>
+          <CardTitle className="light:invert">Edit Supplier</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -134,14 +137,16 @@ export function AddSupplier({ onSave, onClose }) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Item Category</FormLabel>
-                    <FormControl>
+                    
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
+                        <FormControl>
                         <SelectTrigger>
                           <SelectValue />
                         </SelectTrigger>
+                        </FormControl>
                         <SelectContent  style={{ zIndex: 9999 }}>
                           <SelectGroup>
                             <SelectItem value="fruit">Fruit</SelectItem>
@@ -154,7 +159,6 @@ export function AddSupplier({ onSave, onClose }) {
                           </SelectGroup>
                         </SelectContent>
                       </Select>
-                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
